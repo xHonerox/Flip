@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Pokemon Magazine</title>
+</head>
+
+<body>
+  <div class="flipbook">
+    <img src="pages/1.1.png" alt="" />
+  </div>
+
+  <script src="jquery.js"></script>
+  <script src="turn.js"></script>
+  <script>
+    const totalPages = 19;
+    const flipbook = document.querySelector(".flipbook");
+    for(let i = 2; i <= totalPages; i++){
+        for(let j = 1; j <= 2; j++){
+            const img = document.createElement("img");
+            img.src = `pages/${i}.${j}.png`;
+            img.alt = '';
+            flipbook.appendChild(img);
+        }
+    }
+    const backCover = document.createElement("img");
+    backCover.src = 'pages/1.2.png';
+    backCover.alt = '';
+    flipbook.appendChild(backCover);
+
+    let height = window.innerHeight * 0.8;
+    let width = height * 1.5;   
+    $(".flipbook").turn({
+        width: width,
+        height: height,
+});
+  </script>
+</body>
+
+</html>
