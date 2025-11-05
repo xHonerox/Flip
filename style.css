@@ -22,3 +22,30 @@ body {
     width: 70vw;
     height: 70vh;
 }
+
+.navigation-controls {
+  text-align: center;
+  margin-top: 50px; 
+}
+
+.navigation-controls button,
+.navigation-controls input {
+
+  font-family: 'EB Garamond', serif;
+  font-size: 20px; 
+  font-weight: 500; 
+  
+  padding: 8px 12px;
+  margin: 0 3px;
+  border: 1px solid #ccc; 
+  border-radius: 8px; 
+}
+
+.navigation-controls button {
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.navigation-controls button:hover {
+  background-color: #e0e0e0;
+}

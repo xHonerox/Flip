@@ -5,6 +5,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css" />
   <title>Pokemon Magazine</title>
 </head>
@@ -12,9 +17,20 @@
 <body>
   <div class="flipbook">
     <img src="pages/1.1.png" alt="" />
+  </div> 
+
+  <div class="navigation-controls">
+    <button id="first-page">Pierwsza</button>
+    <button id="prev-page">Poprzednia</button>
+    
+    <input type="number" id="goto-page-input" min="1" max="116" value="1" style="width: 65px;">
+    <button id="goto-page-btn">Idź do</button>
+    
+    <button id="next-page">Następna</button>
+    <button id="last-page">Ostatnia</button>
   </div>
 
-  <script src="jquery.js"></script>
+<script src="jquery.js"></script>
   <script src="turn.js"></script>
   <script>
     const totalPages = 58;
@@ -33,11 +49,54 @@
     flipbook.appendChild(backCover);
 
     let height = window.innerHeight * 0.8;
-    let width = height * 1.5;   
-    $(".flipbook").turn({
+    let width = height * 1.5;   
+
+    const $flipbook = $(".flipbook");
+
+    $flipbook.turn({
         width: width,
         height: height,
-});
+    });
+
+    const totalPageCount = $flipbook.turn("pages");
+
+    $("#goto-page-input").attr("max", totalPageCount);
+
+    $("#prev-page").on("click", function() {
+        $flipbook.turn("previous");
+    });
+
+    $("#next-page").on("click", function() {
+        $flipbook.turn("next");
+    });
+
+    $("#first-page").on("click", function() {
+        $flipbook.turn("page", 1); 
+    });
+
+    $("#last-page").on("click", function() {
+        $flipbook.turn("page", totalPageCount);
+    });
+
+    $("#goto-page-btn").on("click", function() {
+        const pageNum = parseInt($("#goto-page-input").val(), 10);
+
+        if (pageNum >= 1 && pageNum <= totalPageCount) {
+            $flipbook.turn("page", pageNum);
+        }
+    });
+
+    const input = document.getElementById('goto-page-input');
+  
+    input.addEventListener('input', () => {
+      const min = parseInt(input.min);
+      const max = parseInt(input.max);
+      let value = parseInt(input.value);
+
+      if (value < min) input.value = min;
+      if (value > max) input.value = max;
+    });
+
   </script>
 </body>
 
