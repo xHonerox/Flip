@@ -24,28 +24,39 @@ body {
 }
 
 .navigation-controls {
-  text-align: center;
-  margin-top: 50px; 
+  display: inline-flex;        /* 🔥 trzyma wszystkie przyciski i inputy w jednym rzędzie */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;                    /* odstęp między elementami */
+  margin-top: 50px;
+  width: 100%;                 /* wyśrodkowanie na całą szerokość */
 }
 
 .navigation-controls button,
 .navigation-controls input {
-
   font-family: 'EB Garamond', serif;
-  font-size: 20px; 
-  font-weight: 500; 
-  
-  padding: 8px 12px;
-  margin: 0 3px;
-  border: 1px solid #ccc; 
-  border-radius: 8px; 
+  font-size: 22px; /* lekko większa czcionka */
+  font-weight: 500;
+  padding: 14px 20px; /* zwiększony rozmiar przycisku */
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
 
 .navigation-controls button {
   cursor: pointer;
   background-color: #f0f0f0;
+  display: flex;               /* środkowanie SVG */
+  min-width: 55px;  /* szerokość minimalna */
+  min-height: 55px; /* wysokość minimalna */
 }
 
 .navigation-controls button:hover {
   background-color: #e0e0e0;
+}
+
+/* powiększenie ikon SVG wewnątrz przycisków */
+.navigation-controls button svg {
+  width: 32px;
+  height: 32px;
 }

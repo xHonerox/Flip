@@ -19,16 +19,48 @@
     <img src="pages/1.1.png" alt="" />
   </div> 
 
-  <div class="navigation-controls">
-    <button id="first-page">Pierwsza</button>
-    <button id="prev-page">Poprzednia</button>
-    
-    <input type="number" id="goto-page-input" min="1" max="116" value="1" style="width: 65px;">
-    <button id="goto-page-btn">Idź do</button>
-    
-    <button id="next-page">Następna</button>
-    <button id="last-page">Ostatnia</button>
-  </div>
+<div class="navigation-controls">
+  <button id="first-page" class="icon-btn" aria-label="Pierwsza">
+    <title>Pierwsza</title>
+    <!-- double left (first) -->
+    <svg viewBox="0 0 24 24" width="24" height="24" role="img" focusable="false" aria-hidden="true">
+      <path d="M18 6 L12 12 L18 18 M12 6 L6 12 L12 18"
+            fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <button id="prev-page" class="icon-btn" aria-label="Poprzednia">
+    <title>Poprzednia</title>
+    <!-- single left (prev) -->
+    <svg viewBox="0 0 24 24" width="24" height="24" role="img" focusable="false" aria-hidden="true">
+      <path d="M15 6 L9 12 L15 18"
+            fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <button id="next-page" class="icon-btn" aria-label="Następna">
+    <title>Następna</title>
+    <!-- single right (next) -->
+    <svg viewBox="0 0 24 24" width="24" height="24" role="img" focusable="false" aria-hidden="true">
+      <path d="M9 6 L15 12 L9 18"
+            fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <button id="last-page" class="icon-btn" aria-label="Ostatnia">
+    <title>Ostatnia</title>
+    <!-- double right (last) -->
+    <svg viewBox="0 0 24 24" width="24" height="24" role="img" focusable="false" aria-hidden="true">
+      <path d="M6 6 L12 12 L6 18 M12 6 L18 12 L12 18"
+            fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
+
 
 <script src="jquery.js"></script>
   <script src="turn.js"></script>
@@ -56,11 +88,10 @@
     $flipbook.turn({
         width: width,
         height: height,
+        page: 2
     });
 
     const totalPageCount = $flipbook.turn("pages");
-
-    $("#goto-page-input").attr("max", totalPageCount);
 
     $("#prev-page").on("click", function() {
         $flipbook.turn("previous");
@@ -78,24 +109,24 @@
         $flipbook.turn("page", totalPageCount);
     });
 
-    $("#goto-page-btn").on("click", function() {
-        const pageNum = parseInt($("#goto-page-input").val(), 10);
+    // $("#goto-page-btn").on("click", function() {
+    //     const pageNum = parseInt($("#goto-page-input").val(), 10);
 
-        if (pageNum >= 1 && pageNum <= totalPageCount) {
-            $flipbook.turn("page", pageNum);
-        }
-    });
+    //     if (pageNum >= 1 && pageNum <= totalPageCount) {
+    //         $flipbook.turn("page", pageNum);
+    //     }
+    // });
 
-    const input = document.getElementById('goto-page-input');
+    // const input = document.getElementById('goto-page-input');
   
-    input.addEventListener('input', () => {
-      const min = parseInt(input.min);
-      const max = parseInt(input.max);
-      let value = parseInt(input.value);
+    // input.addEventListener('input', () => {
+    //   const min = parseInt(input.min);
+    //   const max = parseInt(input.max);
+    //   let value = parseInt(input.value);
 
-      if (value < min) input.value = min;
-      if (value > max) input.value = max;
-    });
+    //   if (value < min) input.value = min;
+    //   if (value > max) input.value = max;
+    // });
 
   </script>
 </body>
